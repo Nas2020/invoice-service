@@ -1,0 +1,72 @@
+curl -X POST http://localhost:9000/api/invoices/generate \
+-H "Content-Type: application/json" \
+-d '{
+  "to": {
+    "company": "Rocket Doctor Inc.",
+    "address": "180 John Street",
+    "city": "Toronto ON",
+    "postalCode": "M5T 1X5 Canada"
+  },
+  "items": [
+    {
+      "date": "2024-10-16",
+      "description": "STAR-675 - NB Billing frontend UI completed",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-17",
+      "description": "STAR-674 - NB Lab requisition form refactoring",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-18",
+      "description": "Task STAR-676 - WIP for New Brunswick microbiology requisition",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-21",
+      "description": "Task STAR-676 - Add support for New Brunswick microbiology requisition",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-22",
+      "description": "Task STAR-676 - Continuation - Add support for New Brunswick microbiology requisition",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-23",
+      "description": "Tasks STAR-674 - 678, STAR-881 frontend UI completed and demo video link send to Anthony (STAR-741 New Brunswick)",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-24",
+      "description": "Code walk through with Chehab, STAR-902 Review and Estimate. Review STAR-614",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-25",
+      "description": "STAR-614 fix Done and Merged. STAR-695 NB Calendar dropdown WIP. STAR-902 Auto-populate CC Provider/Submitter ID",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-28",
+      "description": "New Brunswick Billing STAR-695 and STAR-842 completed and waiting for code review",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-29",
+      "description": "STAR-885 WIP, Fixing merge conflict issues on PR #914",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-30",
+      "description": "STAR-885 WIP, Continuing merge conflict resolution on PR #914",
+      "hours": 4
+    },
+    {
+      "date": "2024-10-31",
+      "description": "STAR-885 merge conflicts resolved. STAR-884 Patient Portal merged to trunk",
+      "hours": 4
+    }
+  ]
+}' --output october-invoice.pdf

@@ -1,0 +1,22 @@
+{
+  "name": "invoice-service",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^18.3.12"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@react-pdf/renderer": "^4.0.0",
+    "hono": "^4.6.9"
+  },
+  "scripts": {
+     "start": "bun --env-file=.env run src/index.ts",
+     "test": "bun test",
+      "test:watch": "bun test --watch"
+  }
+  
+}

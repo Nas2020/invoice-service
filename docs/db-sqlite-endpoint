@@ -1,0 +1,12 @@
+# Get all invoices
+curl http://localhost:9000/api/invoices/all
+
+# Delete an invoice
+curl -X DELETE http://localhost:9000/api/invoices/INV001
+
+# Get invoice count
+curl http://localhost:9000/api/invoices/count
+
+# Delete all invoices
+curl -X DELETE http://localhost:9000/api/invoices/all
+
