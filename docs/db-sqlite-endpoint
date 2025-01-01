@@ -10,3 +10,16 @@ curl http://localhost:9000/api/invoices/count
 # Delete all invoices
 curl -X DELETE http://localhost:9000/api/invoices/all
 
+
+# To delete Database file
+rm invoices.db
+
+
+SQLite query to check the state of your tables:
+sqlite3 invoices.db <<EOF
+.tables
+SELECT * FROM invoices;
+SELECT * FROM profile;
+SELECT * FROM organizations;
+EOF
+

@@ -7,6 +7,10 @@ curl -X POST http://localhost:9000/api/invoices/generate \
     "city": "Toronto ON",
     "postalCode": "M5T 1X5 Canada"
   },
+  "date": {
+    "invoice_submission_date": "Nov 20, 2024",
+    "invoice_due_date": "Dec 1, 2024"
+  },
   "items": [
     {
       "date": "2024-10-16",
@@ -70,3 +74,103 @@ curl -X POST http://localhost:9000/api/invoices/generate \
     }
   ]
 }' --output october-invoice.pdf
+
+
+# 1. Create profile
+curl -X POST http://localhost:9000/api/profile \
+  -H "Content-Type: application/json" \
+  -d '{
+    "business_name": "NAS TIL",
+    "business_role": "Software Engineer",
+    "business_address": "117 Eltomo Pvt",
+    "business_city": "Limoges, ON- K0A 2M0",
+    "business_phone": "4163000491",
+    "business_gst": "70434 3953 RT0001"
+  }'
+
+
+
+  # 2. Verify profile was created
+curl http://localhost:9000/api/profile
+
+# 3. Create organization
+curl -X POST http://localhost:9000/api/organizations \
+  -H "Content-Type: application/json" \
+  -d '{
+    "company_name": "Rocket Doctor Inc.",
+    "address": "180 John Street",
+    "city": "Toronto ON",
+    "postal_code": "M5T 1X5 Canada",
+    "hourly_rate": 65,
+    "tax_rate": 13,
+    "business_role": "Senior Software Engineer"
+  }'
+
+  curl -X POST http://localhost:9000/api/organizations \
+  -H "Content-Type: application/json" \
+  -d '{
+    "company_name": "VeriDID Corp.",
+    "address": "246 Vaughan Rd",
+    "city": "York ON",
+    "postal_code": "M6C 2M6 Canada",
+    "hourly_rate": 65,
+    "tax_rate": 13,
+    "business_role": "Site Reliability Engineer"
+  }'
+
+
+  # Update an organization's business role:
+  curl -X PUT http://localhost:9000/api/organizations/2 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "company_name": "VeriDID Corp.",
+    "address": "246 Vaughan Rd",
+    "city": "York ON",
+    "postal_code": "M6C 2M6 Canada",
+    "hourly_rate": 65,
+    "tax_rate": 13,
+    "business_role": "Site Reliablity Engineer"
+  }'
+
+
+  curl -X POST http://localhost:9000/api/invoices/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": {
+      "company": "Rocket Doctor Inc."
+    },
+    "items": [
+      {
+        "date": "2024-11-24",
+        "description": "API Development",
+        "hours": 8
+      },
+      {
+        "date": "2024-11-24",
+        "description": "Database Design",
+        "hours": 4
+      }
+    ]
+  }'
+
+  curl -X POST http://localhost:9000/api/invoices/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": {
+      "company": "VeriDID Corp."
+    },
+    "items": [
+      {
+        "date": "2024-11-24",
+        "description": "API Development",
+        "hours": 8
+      },
+      {
+        "date": "2024-11-24",
+        "description": "Database Design",
+        "hours": 4
+      }
+    ]
+  }'
+
+
