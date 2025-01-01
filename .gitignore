@@ -3,6 +3,7 @@
 # Project specific
 /pdfs/
 *.db
+invoices.db
 /dist/
 bun.lockb
 
